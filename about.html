@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story | Ghar Stays</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --deep-green: #1F3D36;
+      --sand: #F4EDE2;
+      --terracotta: #C8643B;
+      --charcoal: #222222;
+      --white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--charcoal);
+      background: var(--sand);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--deep-green);
+      font-family: "Playfair Display", serif;
+      line-height: 1.15;
+    }
+
+    .container {
+      width: min(100% - 32px, 960px);
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--deep-green);
+      color: var(--white);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      color: var(--white);
+      text-decoration: none;
+      font-family: "Playfair Display", serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover,
+    .footer-contact a:hover {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    main {
+      padding: 64px 0 88px;
+    }
+
+    .intro {
+      max-width: 720px;
+      margin-bottom: 52px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--terracotta);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+      font-size: 1.1rem;
+    }
+
+    .section-heading {
+      margin: 0 0 24px;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+    }
+
+    .story {
+      margin-bottom: 56px;
+    }
+
+    .story p {
+      max-width: 720px;
+    }
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 56px;
+    }
+
+    .reason {
+      border-radius: 12px;
+      padding: 22px;
+      background: var(--white);
+    }
+
+    .reason span {
+      font-size: 1.8rem;
+    }
+
+    .reason h3 {
+      margin: 12px 0 8px;
+      font-size: 1.3rem;
+    }
+
+    .reason p {
+      margin: 0;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-list details {
+      border-radius: 10px;
+      padding: 18px 20px;
+      background: var(--white);
+    }
+
+    .faq-list summary {
+      color: var(--deep-green);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .faq-list p {
+      margin: 12px 0 0;
+    }
+
+    .site-footer {
+      padding: 30px 0;
+      color: var(--white);
+      background: var(--deep-green);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-inner p {
+      margin: 0;
+    }
+
+    .footer-contact {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-contact a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        min-height: 68px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+        padding: 12px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .nav-links a {
+        font-size: 0.82rem;
+      }
+
+      main {
+        padding: 48px 0 64px;
+      }
+
+      .reasons {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner,
+      .footer-contact {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-contact {
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="logo" href="index.html#home">Ghar Stays</a>
+      <div class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#apartments">Apartments</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <p class="eyebrow">Your home in Lahore.</p>
+      <h1>A little more like home.</h1>
+      <p>We started Ghar Stays with a simple idea: a good stay should feel welcoming from the moment you arrive. Today, we make it easier for guests to settle in and enjoy Lahore, one thoughtful apartment at a time.</p>
+    </section>
+
+    <section class="story" aria-labelledby="story-heading">
+      <h2 class="section-heading" id="story-heading">Our story</h2>
+      <p>Lahore is a city best enjoyed at your own pace. We wanted visitors to have a comfortable place to return to after a day out, with the space and little comforts of home. So we put together a collection of welcoming stays in Gulberg, DHA and Johar Town, and a friendly local team to help make each visit simple.</p>
+      <p>Whether you are here for work, family or a change of scene, we are glad to host you.</p>
+    </section>
+
+    <section aria-labelledby="reasons-heading">
+      <h2 class="section-heading" id="reasons-heading">Why guests choose us</h2>
+      <div class="reasons">
+        <article class="reason">
+          <span aria-hidden="true">🛋️</span>
+          <h3>Room to settle in</h3>
+          <p>Enjoy comfortable spaces with the essentials for a relaxed stay.</p>
+        </article>
+        <article class="reason">
+          <span aria-hidden="true">📍</span>
+          <h3>Neighbourhood stays</h3>
+          <p>Choose a home base in Gulberg, DHA or Johar Town.</p>
+        </article>
+        <article class="reason">
+          <span aria-hidden="true">🤝</span>
+          <h3>Helpful local hosts</h3>
+          <p>Our team is here to answer questions and help you feel at ease.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq-heading">
+      <h2 class="section-heading" id="faq-heading">A few helpful answers</h2>
+      <div class="faq-list">
+        <details>
+          <summary>What time is check-in?</summary>
+          <p>Check-in is from 3:00 PM. Let us know if you need help planning an earlier arrival.</p>
+        </details>
+        <details>
+          <summary>What is the cancellation policy?</summary>
+          <p>For this sample listing, you can cancel up to 48 hours before check-in. Please confirm the policy for your chosen apartment when booking.</p>
+        </details>
+        <details>
+          <summary>Is parking available?</summary>
+          <p>Parking availability can vary by apartment. Ask our team about the space you have in mind before booking.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Ghar Stays · Lahore</p>
+      <div class="footer-contact">
+        <a href="https://wa.me/923001234567">WhatsApp: 0300-1234567</a>
+        <a href="mailto:hello@gharstays.pk">hello@gharstays.pk</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

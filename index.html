@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghar Stays | Lahore Apartments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --deep-green: #1F3D36;
+      --sand: #F4EDE2;
+      --terracotta: #C8643B;
+      --charcoal: #222222;
+      --white: #FFFFFF;
+      --red: #B42318;
+      --green: #246B43;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--charcoal);
+      background: var(--sand);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--deep-green);
+      font-family: "Playfair Display", serif;
+      line-height: 1.15;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--deep-green);
+      color: var(--white);
+      box-shadow: 0 2px 12px rgba(31, 61, 54, 0.12);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      color: var(--white);
+      text-decoration: none;
+      font-family: "Playfair Display", serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .hero {
+      min-height: 480px;
+      display: grid;
+      align-items: center;
+      padding: 72px 0;
+    }
+
+    .hero-inner {
+      max-width: 680px;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      font-size: clamp(3rem, 8vw, 5.25rem);
+    }
+
+    .hero p {
+      max-width: 540px;
+      margin: 0 0 30px;
+      font-size: 1.15rem;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 20px;
+      color: var(--white);
+      background: var(--terracotta);
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #AD5532;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-heading {
+      margin: 0 0 30px;
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .apartment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .apartment-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 24px;
+    }
+
+    .filter-button {
+      min-height: 42px;
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      color: var(--white);
+      background: var(--terracotta);
+      font: 600 0.95rem "Inter", sans-serif;
+      cursor: pointer;
+    }
+
+    .filter-button:hover,
+    .filter-button[aria-pressed="true"] {
+      background: #AD5532;
+    }
+
+    .apartment-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(31, 61, 54, 0.08);
+    }
+
+    .apartment-emoji {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 2.4rem;
+    }
+
+    .apartment-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.45rem;
+    }
+
+    .area {
+      margin: 0 0 16px;
+      color: var(--terracotta);
+      font-weight: 600;
+    }
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin: 0 0 18px;
+      font-size: 0.92rem;
+    }
+
+    .price {
+      margin: 0;
+      color: var(--deep-green);
+      font-weight: 700;
+    }
+
+    .why-section {
+      background: var(--deep-green);
+    }
+
+    .why-section .section-heading {
+      color: var(--white);
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .benefit {
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 12px;
+      padding: 24px;
+      color: var(--white);
+    }
+
+    .benefit h3 {
+      margin: 0 0 8px;
+      color: var(--white);
+      font-size: 1.35rem;
+    }
+
+    .benefit p {
+      margin: 0;
+    }
+
+    .booking-section {
+      padding-bottom: 88px;
+    }
+
+    .booking-wrap {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .booking-copy p {
+      margin: 0;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid #A7A39D;
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: var(--charcoal);
+      background: var(--white);
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--deep-green);
+      outline: 2px solid rgba(31, 61, 54, 0.16);
+    }
+
+    .form-actions {
+      grid-column: 1 / -1;
+    }
+
+    .form-actions .button {
+      width: 100%;
+    }
+
+    .form-message {
+      grid-column: 1 / -1;
+      display: none;
+      margin: 0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-weight: 600;
+    }
+
+    .form-message.error {
+      display: block;
+      color: var(--red);
+      background: #FEE4E2;
+    }
+
+    .form-message.success {
+      display: block;
+      color: var(--green);
+      background: #D1FADF;
+    }
+
+    .site-footer {
+      background: var(--deep-green);
+      color: var(--white);
+      padding: 30px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-inner p {
+      margin: 0;
+    }
+
+    .footer-contact {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-contact a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 32px, 1120px);
+      }
+
+      .nav {
+        min-height: 68px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+        padding: 12px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .nav-links a {
+        font-size: 0.82rem;
+      }
+
+      .hero {
+        min-height: 420px;
+        padding: 56px 0;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+
+      .apartment-grid,
+      .benefits,
+      .booking-wrap,
+      .booking-form {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-wrap {
+        gap: 24px;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .footer-inner,
+      .footer-contact {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-contact {
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="logo" href="#home">Ghar Stays</a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#apartments">Apartments</a>
+        <a href="about.html">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-inner">
+          <h1>Your home in Lahore.</h1>
+          <p>Warm, comfortable apartments in the city's best neighbourhoods. Stay for a night or settle in for longer.</p>
+          <a class="button" href="#apartments">Browse apartments</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="apartments">
+      <div class="container">
+        <h2 class="section-heading">Find your stay</h2>
+        <div class="apartment-filters" role="group" aria-label="Filter apartments by area">
+          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-filter="Gulberg" aria-pressed="false">Gulberg</button>
+          <button class="filter-button" type="button" data-filter="DHA" aria-pressed="false">DHA</button>
+          <button class="filter-button" type="button" data-filter="Johar Town" aria-pressed="false">Johar Town</button>
+        </div>
+        <div class="apartment-grid">
+          <article class="apartment-card" data-area="Gulberg">
+            <span class="apartment-emoji" aria-hidden="true">🏡</span>
+            <h3>The Gulberg Garden</h3>
+            <p class="area">Gulberg</p>
+            <div class="details"><span>2 bedrooms</span><span>4 guests</span></div>
+            <p class="price">Rs 12,500 / night</p>
+          </article>
+          <article class="apartment-card" data-area="Gulberg">
+            <span class="apartment-emoji" aria-hidden="true">🌿</span>
+            <h3>Gulberg Green Suite</h3>
+            <p class="area">Gulberg</p>
+            <div class="details"><span>1 bedroom</span><span>2 guests</span></div>
+            <p class="price">Rs 8,500 / night</p>
+          </article>
+          <article class="apartment-card" data-area="DHA">
+            <span class="apartment-emoji" aria-hidden="true">🌳</span>
+            <h3>DHA Courtyard Home</h3>
+            <p class="area">DHA</p>
+            <div class="details"><span>3 bedrooms</span><span>6 guests</span></div>
+            <p class="price">Rs 18,500 / night</p>
+          </article>
+          <article class="apartment-card" data-area="DHA">
+            <span class="apartment-emoji" aria-hidden="true">🏠</span>
+            <h3>DHA Family Residence</h3>
+            <p class="area">DHA</p>
+            <div class="details"><span>4 bedrooms</span><span>8 guests</span></div>
+            <p class="price">Rs 22,000 / night</p>
+          </article>
+          <article class="apartment-card" data-area="Johar Town">
+            <span class="apartment-emoji" aria-hidden="true">🌆</span>
+            <h3>Johar Town Retreat</h3>
+            <p class="area">Johar Town</p>
+            <div class="details"><span>2 bedrooms</span><span>4 guests</span></div>
+            <p class="price">Rs 10,500 / night</p>
+          </article>
+          <article class="apartment-card" data-area="Johar Town">
+            <span class="apartment-emoji" aria-hidden="true">🛋️</span>
+            <h3>Johar Town Haven</h3>
+            <p class="area">Johar Town</p>
+            <div class="details"><span>1 bedroom</span><span>3 guests</span></div>
+            <p class="price">Rs 9,500 / night</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-section" id="about">
+      <div class="container">
+        <h2 class="section-heading">Why stay with us</h2>
+        <div class="benefits">
+          <article class="benefit">
+            <h3>Comfort that feels familiar</h3>
+            <p>Thoughtful rooms, cosy living spaces and everything you need for an easy stay.</p>
+          </article>
+          <article class="benefit">
+            <h3>Prime Lahore locations</h3>
+            <p>Close to cafés, dining, parks and the places that make the city feel like home.</p>
+          </article>
+          <article class="benefit">
+            <h3>Personal local support</h3>
+            <p>Friendly help before and during your stay, whenever you need a hand.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section" id="contact">
+      <div class="container booking-wrap">
+        <div class="booking-copy">
+          <h2 class="section-heading">Plan your stay</h2>
+          <p>Tell us what you need. Our team will help you find the right apartment.</p>
+        </div>
+
+        <form class="booking-form" id="bookingForm" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="0300-1234567" required>
+          </div>
+          <div class="field full">
+            <label for="apartment">Apartment</label>
+            <select id="apartment" name="apartment" required>
+              <option value="">Choose an apartment</option>
+              <option>The Gulberg Garden</option>
+              <option>Gulberg Green Suite</option>
+              <option>DHA Courtyard Home</option>
+              <option>DHA Family Residence</option>
+              <option>Johar Town Retreat</option>
+              <option>Johar Town Haven</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="checkin">Check-in date</label>
+            <input id="checkin" name="checkin" type="date" value="2026-12-12" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Check-out date</label>
+            <input id="checkout" name="checkout" type="date" value="2026-12-15" required>
+          </div>
+          <div class="field full">
+            <label for="guests">Number of guests</label>
+            <input id="guests" name="guests" type="number" min="1" max="8" value="2" required>
+          </div>
+          <div class="form-actions">
+            <button class="button" type="submit">Send booking enquiry</button>
+          </div>
+          <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Ghar Stays · Lahore</p>
+      <div class="footer-contact">
+        <a href="https://wa.me/923001234567">WhatsApp: 0300-1234567</a>
+        <a href="mailto:hello@gharstays.pk">hello@gharstays.pk</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const apartmentCards = document.querySelectorAll(".apartment-card");
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const selectedArea = button.dataset.filter;
+
+        filterButtons.forEach(function (filterButton) {
+          filterButton.setAttribute("aria-pressed", String(filterButton === button));
+        });
+
+        apartmentCards.forEach(function (card) {
+          card.hidden = selectedArea !== "all" && card.dataset.area !== selectedArea;
+        });
+      });
+    });
+
+    const bookingForm = document.getElementById("bookingForm");
+    const phoneInput = document.getElementById("phone");
+    const formMessage = document.getElementById("formMessage");
+
+    bookingForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      formMessage.className = "form-message";
+      formMessage.textContent = "";
+
+      const phone = phoneInput.value.replace(/\D/g, "");
+
+      if (!/^03\d{9}$/.test(phone)) {
+        formMessage.className = "form-message error";
+        formMessage.textContent = "Please enter a valid 11-digit phone number starting with 03.";
+        phoneInput.focus();
+        return;
+      }
+
+      if (!bookingForm.checkValidity()) {
+        bookingForm.reportValidity();
+        return;
+      }
+
+      formMessage.className = "form-message success";
+      formMessage.textContent = "Thank you, we'll WhatsApp you within an hour";
+      bookingForm.reset();
+    });
+  </script>
+</body>
+</html>
