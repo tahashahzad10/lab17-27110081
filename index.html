@@ -635,6 +635,10 @@
     const checkoutInput = document.getElementById("checkout");
     const priceSummary = document.getElementById("priceSummary");
 
+    function updateCheckoutMinimum() {
+      checkoutInput.min = checkinInput.value;
+    }
+
     function updatePriceSummary() {
       const selectedOption = apartmentSelect.selectedOptions[0];
       const nightlyPrice = Number(selectedOption.dataset.price);
@@ -655,17 +659,29 @@
       priceSummary.hidden = false;
     }
 
+    checkinInput.addEventListener("input", updateCheckoutMinimum);
+    checkinInput.addEventListener("change", updateCheckoutMinimum);
+
     [apartmentSelect, checkinInput, checkoutInput].forEach(function (input) {
       input.addEventListener("input", updatePriceSummary);
       input.addEventListener("change", updatePriceSummary);
     });
 
+    updateCheckoutMinimum();
     updatePriceSummary();
 
     bookingForm.addEventListener("submit", function (event) {
       event.preventDefault();
       formMessage.className = "form-message";
       formMessage.textContent = "";
+
+      if (checkinInput.value && checkoutInput.value &&
+          checkoutInput.value < checkinInput.value) {
+        formMessage.className = "form-message error";
+        formMessage.textContent = "Please choose a check-out date that is on or after your check-in date.";
+        checkoutInput.focus();
+        return;
+      }
 
       const phone = phoneInput.value.replace(/\D/g, "");
 
@@ -684,6 +700,7 @@
       formMessage.className = "form-message success";
       formMessage.textContent = "Thank you, we'll WhatsApp you within an hour";
       bookingForm.reset();
+      updateCheckoutMinimum();
       updatePriceSummary();
     });
   </script>
