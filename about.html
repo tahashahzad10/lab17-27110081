@@ -174,6 +174,29 @@
       background: var(--deep-green);
     }
 
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 12px 18px;
+      color: var(--white);
+      background: var(--deep-green);
+      box-shadow: 0 4px 14px rgba(34, 34, 34, 0.2);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:focus-visible {
+      outline: 2px solid var(--terracotta);
+      outline-offset: 3px;
+    }
+
     .footer-inner {
       display: flex;
       align-items: center;
@@ -309,5 +332,9 @@
       </div>
     </div>
   </footer>
+  <a class="whatsapp-float" href="https://wa.me/923001234567" aria-label="Chat with Ghar Stays on WhatsApp">
+    <span aria-hidden="true">💬</span>
+    <span>WhatsApp us</span>
+  </a>
 </body>
 </html>
